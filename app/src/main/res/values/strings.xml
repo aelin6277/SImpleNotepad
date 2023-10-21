@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Notes</string>
+    <string name="app_name">Note Title</string>
     <string name="deleteNote">Delete note</string>
     <string name="saveNote">Save note</string>
     <string name="titleEditText">Notes</string>

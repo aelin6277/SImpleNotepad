@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 
 public class NoteActivity extends AppCompatActivity implements NoteView {
@@ -44,5 +45,9 @@ public class NoteActivity extends AppCompatActivity implements NoteView {
     public void navigateToMain() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    public void saveNote(View view) {
+        presenter.saveNote(titleEditText.getText().toString(), textEditText.getText().toString());
     }
 }

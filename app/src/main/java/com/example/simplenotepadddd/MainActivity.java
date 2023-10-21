@@ -9,15 +9,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements MainView {
     private MainPresenter presenter;
     private ListView noteListView;
     private TextView title1;
+    private ArrayAdapter adapter;
+    private List<String> noteTitlesAdapterList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +34,19 @@ public class MainActivity extends AppCompatActivity implements MainView {
         presenter = new MainPresenter(this, sharedPreferences);
 
         noteListView = findViewById(R.id.noteListView);
-        // Implementera adapter och klickhantering för listan
-        // ...
+
+        noteTitlesAdapterList = new ArrayList<>();
+        adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, noteTitlesAdapterList);
+        noteListView.setAdapter(adapter);
+
+        presenter.loadNoteTitles();
+         //och klickhantering för listan
     }
 
     @Override
     public void showNoteTitles(List<String> noteTitles) {
-        // Uppdatera listan med anteckningstitlar
-        // ...
+        noteTitlesAdapterList.addAll(noteTitles);
+        adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -47,8 +58,13 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @Override
     public void navigateToCreateNoteActivity() {
-        // Starta aktivitet för att skapa ny anteckning
-        // ...
+         //intent to start the noteactivity
+        Intent intent = new Intent(this,NoteActivity.class);
+        startActivity(intent);
+    }
+
+    public void createNewNote(View view) {
+        presenter.onCreateNote();
     }
 }
 
