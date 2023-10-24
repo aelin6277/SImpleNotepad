@@ -26,8 +26,9 @@ public class NoteActivity extends AppCompatActivity implements NoteView {
 
         Intent intent = getIntent();
         if (intent.hasExtra("noteTitle")) {
-            String noteTitle = intent.getStringExtra("noteTitle");
-            presenter.loadNoteData(noteTitle);
+            //This means that the user clicked a note on the noteList
+            String noteTitle = intent.getStringExtra("noteTitle");//get the noteTitle that the user clicked
+            presenter.loadNoteData(noteTitle);//ask the presenter to load (and show) the selected Note from the user
         }
     }
 
@@ -43,6 +44,7 @@ public class NoteActivity extends AppCompatActivity implements NoteView {
 
     @Override
     public void navigateToMain() {
+        //go back to the main activity
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

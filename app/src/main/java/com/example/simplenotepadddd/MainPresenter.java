@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class MainPresenter {
+public class MainPresenter { //=i presenter anges de metoder som kommer hantera data mellan model och view.
     private MainView view;
     private SharedPreferences sharedPreferences;
 
@@ -15,10 +15,10 @@ public class MainPresenter {
         this.sharedPreferences = sharedPreferences;
     }
 
-    public void loadNoteTitles() {
+    public void loadNoteTitles() { //=har alla notetitles i shared preferences
         Map<String, ?> savedNotes = sharedPreferences.getAll();
         List<String> noteTitles = new ArrayList<>(savedNotes.keySet());
-        view.showNoteTitles(noteTitles);
+        view.showNoteTitles(noteTitles); //="View, visa dem"
     }
 
     public void onNoteSelected(String noteTitle) {

@@ -1,5 +1,8 @@
 package com.example.simplenotepadddd;
 
+import android.view.View;
+import android.widget.AdapterView;
+
 import java.util.List;
 
 public interface MainView {

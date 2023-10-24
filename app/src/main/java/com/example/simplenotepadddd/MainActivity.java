@@ -1,19 +1,18 @@
 package com.example.simplenotepadddd;
 
 //MVP arkitektur. Använder shared preferences för att spara data. Använder interfaceklasser för att
-// kommunikation mellan VIEWS MainActivity och NoteActivity ska ske samt mellan PRESENTERklasserna
-// MainPresenter och NotePresenter
-
-import androidx.appcompat.app.AppCompatActivity;
+// kommunicera mellan presenter och view. Leo los datos guardado en los presenterclasses.
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,20 +32,38 @@ public class MainActivity extends AppCompatActivity implements MainView {
         SharedPreferences sharedPreferences = getSharedPreferences("Notes", MODE_PRIVATE);
         presenter = new MainPresenter(this, sharedPreferences);
 
-        noteListView = findViewById(R.id.noteListView);
+        noteListView = findViewById(R.id.noteListView);//Pekar mot layouten
 
         noteTitlesAdapterList = new ArrayList<>();
-        adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, noteTitlesAdapterList);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, noteTitlesAdapterList);
         noteListView.setAdapter(adapter);
 
         presenter.loadNoteTitles();
-         //och klickhantering för listan
+        // klickhantering för listan
+        //För att hantera klickhändelser för listan anvands en
+        // OnItemClickListener för ListView.
+
+        noteListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //Hanterar klickhandelser for den valda anteckningen
+                String selectedNoteTitle = noteTitlesAdapterList.get(position);
+
+                //Visar den valda anteckningen i NoteActivity
+                Intent intent = new Intent(MainActivity.this, NoteActivity.class);
+                intent.putExtra("noteTitle", selectedNoteTitle);
+
+                //Starts/Shows the NoteActivity Activity
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override
     public void showNoteTitles(List<String> noteTitles) {
-        noteTitlesAdapterList.addAll(noteTitles);
-        adapter.notifyDataSetChanged();
+        noteTitlesAdapterList.addAll(noteTitles); //The list of the adapter now has all the note Titles from sharedPreferences (Model)
+        adapter.notifyDataSetChanged(); //Det som jag ber om i mainPresenter visas tack vare adaptern,
     }
 
     @Override
@@ -58,8 +75,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @Override
     public void navigateToCreateNoteActivity() {
-         //intent to start the noteactivity
-        Intent intent = new Intent(this,NoteActivity.class);
+        //intent to start the noteactivity
+        Intent intent = new Intent(this, NoteActivity.class);
         startActivity(intent);
     }
 

@@ -1,6 +1,7 @@
 package com.example.simplenotepadddd;
 
-import android.content.SharedPreferences;
+import android.content.SharedPreferences; //i presenter anges de metoder som kommer
+// hantera data mellan model och view.
 
 public class NotePresenter {
     private NoteView view;
