@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">Note Title</string>
+    <string name="app_name">Note titles</string>
     <string name="deleteNote">Delete note</string>
     <string name="saveNote">Save note</string>
-    <string name="titleEditText">Notes</string>
-    <string name="createNewNote">Create new notes</string>
+    <string name="titleEditText">Title</string>
+    <string name="textEditText">Your note</string>
+    <string name="createNewNote">Create a new note</string>
     <string name="title1">Notepad</string>
 </resources>
 

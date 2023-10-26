@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="button_width">378dp</dimen>
+    <dimen name="button_height">123dp</dimen>
+    <dimen name="text_size_small">16sp</dimen>
+    <dimen name="text_size_medium">20sp</dimen>
+    <dimen name="text_size_large">24sp</dimen>
+    <dimen name="image_width_small">133sp</dimen>
+    <dimen name="image_width_medium">263sp</dimen>
+    <dimen name="image_width_large">379sp</dimen>
+    <dimen name="image_height_small">133sp</dimen>
+    <dimen name="image_height_medium">263sp</dimen>
+    <dimen name="image_height_large">363sp</dimen>
+    <dimen name="list_width">378sp</dimen>
+    <dimen name="list_height">340sp</dimen>
+
+</resources>
+
+

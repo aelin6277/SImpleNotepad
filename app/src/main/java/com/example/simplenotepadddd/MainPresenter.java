@@ -22,10 +22,12 @@ public class MainPresenter { //=i presenter anges de metoder som kommer hantera 
     }
 
     public void onNoteSelected(String noteTitle) {
+
         view.navigateToNoteActivity(noteTitle);
     }
 
     public void onCreateNote() {
+
         view.navigateToCreateNoteActivity();
     }
 }

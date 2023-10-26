@@ -2,13 +2,19 @@ package com.example.simplenotepadddd;
 
 //MVP arkitektur. Använder shared preferences för att spara data. Använder interfaceklasser för att
 // kommunicera mellan presenter och view. Leo los datos guardado en los presenterclasses.
-
+//Kom ihåg att lägga till aktiviteterna i AndroidManifest.xml och hantera behörigheter för att
+// spara data på enheten.
+//I AndroidManifest.xml-filen deklareras alla aktiviteter som ingår i appen. Detta är
+// nödvändigt för att Android-systemet ska veta vilka aktiviteter som kan startas och hur de
+// är relaterade till varandra.
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -23,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
     private TextView title1;
     private ArrayAdapter adapter;
     private List<String> noteTitlesAdapterList;
+    private ImageView imageView;
+   // private ImageButton imageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +47,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
         noteListView.setAdapter(adapter);
 
         presenter.loadNoteTitles();
-        // klickhantering för listan
         //För att hantera klickhändelser för listan anvands en
-        // OnItemClickListener för ListView.
+        // OnItemClickListener för ListView:
 
         noteListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -57,7 +64,25 @@ public class MainActivity extends AppCompatActivity implements MainView {
                 startActivity(intent);
             }
         });
+//
+//        ImageView notepadImage;
+//        imageView.setBackgroundResource(R.drawable.notepad_image);
 
+    }
+
+    //THe following code wasnt in a method, then it is throwing a compilation error
+//    ImageButton imageButton = findViewById(R.id.imageButton);
+//imageButton.setOnClickListener(new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//            // Lägg till din klickhändelse här
+//        }
+//    });
+
+
+
+    private ImageView findViewById(ImageView backgroundImage) {
+        return null;
     }
 
     @Override
@@ -85,6 +110,3 @@ public class MainActivity extends AppCompatActivity implements MainView {
     }
 }
 
-//Jag måste nu implementera XML-layoutfiler för MainActivity och NoteActivity samt
-// inkludera nödvändiga komponenter i dem. Kom ihåg att lägga till aktiviteterna i
-// AndroidManifest.xml och hantera behörigheter för att spara data på enheten.
