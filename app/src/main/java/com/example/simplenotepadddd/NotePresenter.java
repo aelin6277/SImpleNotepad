@@ -20,12 +20,11 @@ public class NotePresenter {
         view.showNoteText(noteText);
     }
 
-    public void saveOrUpdateNote(String noteTitle, String noteText, Optional oldNoteTitle) {
+    public void saveOrUpdateNote(String noteTitle, String noteText, Optional<String> oldNoteTitle) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         if (oldNoteTitle.isPresent()) {
             //the note already existed, it is an update
-            editor.remove(noteTitle); // remove the old note
-            editor.apply();
+            editor.remove(oldNoteTitle.get()); // remove the old note
         }
         editor.putString(noteTitle, noteText);
         editor.apply();
