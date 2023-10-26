@@ -7,13 +7,13 @@ package com.example.simplenotepadddd;
 //I AndroidManifest.xml-filen deklareras alla aktiviteter som ingår i appen. Detta är
 // nödvändigt för att Android-systemet ska veta vilka aktiviteter som kan startas och hur de
 // är relaterade till varandra.
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -29,8 +29,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
     private TextView title1;
     private ArrayAdapter adapter;
     private List<String> noteTitlesAdapterList;
-    private ImageView imageView;
-   // private ImageButton imageButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,26 +59,11 @@ public class MainActivity extends AppCompatActivity implements MainView {
                 Intent intent = new Intent(MainActivity.this, NoteActivity.class);
                 intent.putExtra("noteTitle", selectedNoteTitle);
 
-                //Starts/Shows the NoteActivity Activity
+                //Startar/visar NoteActivity-aktiviteten
                 startActivity(intent);
             }
         });
-//
-//        ImageView notepadImage;
-//        imageView.setBackgroundResource(R.drawable.notepad_image);
-
     }
-
-    //THe following code wasnt in a method, then it is throwing a compilation error
-//    ImageButton imageButton = findViewById(R.id.imageButton);
-//imageButton.setOnClickListener(new View.OnClickListener() {
-//        @Override
-//        public void onClick(View v) {
-//            // Lägg till din klickhändelse här
-//        }
-//    });
-
-
 
     private ImageView findViewById(ImageView backgroundImage) {
         return null;
@@ -87,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @Override
     public void showNoteTitles(List<String> noteTitles) {
-        noteTitlesAdapterList.addAll(noteTitles); //The list of the adapter now has all the note Titles from sharedPreferences (Model)
+        noteTitlesAdapterList.addAll(noteTitles); // Listen över adaptern har nu alla noteTitles från sharedPreferences (Model)
         adapter.notifyDataSetChanged(); //Det som jag ber om i mainPresenter visas tack vare adaptern,
     }
 
@@ -100,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @Override
     public void navigateToCreateNoteActivity() {
-        //intent to start the noteactivity
+        //intent att starta den noteactivity
         Intent intent = new Intent(this, NoteActivity.class);
         startActivity(intent);
     }

@@ -7,27 +7,32 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
+    android:background="@color/background"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/title1"
-        android:layout_width="375dp"
-        android:layout_height="53dp"
-        android:textStyle="bold"/>
+    <ImageView
+        android:layout_width="@dimen/image_width_large"
+        android:layout_height="@dimen/image_height_large"
+        android:scaleType="fitXY"
+        android:src="@drawable/notepad_image" />
 
     <ListView
         android:id="@+id/noteListView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/list_width"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:divider="@android:color/darker_gray"
-        android:dividerHeight="1dp"/>
+        android:dividerHeight="1dp"
+        android:src="@drawable/background_image" />
 
     <Button
         android:id="@+id/createNewNote"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Create New Note"
-        android:onClick="createNewNote"/>
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:background="@color/purple"
+        android:onClick="createNewNote"
+        android:text="@string/createNewNote"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_large" />
 
 </LinearLayout>

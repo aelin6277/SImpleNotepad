@@ -1,6 +1,6 @@
 package com.example.simplenotepadddd;
 
-import android.content.SharedPreferences; //i presenter anges de metoder som kommer
+import android.content.SharedPreferences;
 
 import java.util.Optional;
 // hantera data mellan model och view.
@@ -23,8 +23,8 @@ public class NotePresenter {
     public void saveOrUpdateNote(String noteTitle, String noteText, Optional<String> oldNoteTitle) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         if (oldNoteTitle.isPresent()) {
-            //the note already existed, it is an update
-            editor.remove(oldNoteTitle.get()); // remove the old note
+            //Note-n fanns redan, det är en uppdatering
+            editor.remove(oldNoteTitle.get()); //ta bort den gamla note
         }
         editor.putString(noteTitle, noteText);
         editor.apply();
